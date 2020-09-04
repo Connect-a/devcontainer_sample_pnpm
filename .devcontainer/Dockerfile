@@ -12,7 +12,6 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # [Optional] Uncomment if you want to install more global node packages
 # RUN sudo -u node npm install -g <your-package-list -here>
-RUN echo 'export PS1="\[\e[1;32m\]🐳[\u@\h \W]\\$ \[\e[m\]"' >> /root/.bashrc
 
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
