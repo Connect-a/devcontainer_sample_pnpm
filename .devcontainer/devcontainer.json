@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.138.0/containers/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  "build": {
+    "dockerfile": "Dockerfile",
+    // Update 'VARIANT' to pick a Node version: 10, 12, 14
+    "args": {
+      "VARIANT": "14"
+    }
+  },
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-ceintl.vscode-language-pack-ja",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "streetsidesoftware.code-spell-checker",
+    "coenraads.bracket-pair-colorizer-2",
+    "wmaurer.change-case",
+    "mosapride.zenkaku",
+    "octref.vetur",
+    "dariofuzinato.vue-peek",
+  ],
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=${localWorkspaceFolderBasename}-dist,target=${containerWorkspaceFolder}/dist,type=volume",
+    "source=pnpm-cache,target=${containerWorkspaceFolder}/.pnpm-store,type=volume"
+  ],
+  "containerEnv": {
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "npm install -g pnpm && pnpm install && git config core.ignorecase false && git config core.autocrlf input && apt-get -y remove yarn",
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "node"
+}
