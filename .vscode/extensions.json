@@ -1,0 +1,4 @@
+{
+  "recommendations": ["ms-vscode-remote.remote-containers"],
+  "unwantedRecommendations": ["ms-vscode-remote.remote-wsl"]
+}
